@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --shadow-panel: var(--shadow-hi);
+}
+
+:root {
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --line: #e2e7f0;
+  --ink: #0e1526;
+  --muted: #5a6478;
+  --faint: #5f6b83;
+  --primary: #4353e0;
+  --primary-strong: #3542b8;
+  --primary-soft: #eceffc;
+  --accent: #0e7c9e;
+  --shadow-hi:
+    0 1px 2px rgba(16, 24, 48, 0.04),
+    0 12px 32px -12px rgba(16, 24, 48, 0.14);
+
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #080b12;
+  --surface: #0b101d;
+  --card: #0e1424;
+  --line: #1a2236;
+  --ink: #eef1f8;
+  --muted: #98a3bb;
+  --faint: #77839f;
+  --primary: #8b96ff;
+  --primary-strong: #a5adff;
+  --primary-soft: #141a2e;
+  --accent: #57d5f0;
+  --shadow-hi:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 24px 48px -24px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+::selection {
+  background: var(--primary-soft);
+  color: var(--ink);
+}
+
+/* Visible, consistent focus states */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Thin, theme-aware scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 9999px;
+  border: 2px solid var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

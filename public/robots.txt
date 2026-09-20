@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nasiranaiby.github.io/nasira.naeibi3795/sitemap.xml
